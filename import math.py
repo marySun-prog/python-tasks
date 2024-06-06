@@ -26,29 +26,35 @@ def calculate_entropyH(message):
     a =  alphabet_power(message)
     entropy = math.log2(a)
     return entropy
+while True:
 
-# Запрос имени файла у пользователя
-file_name = input("Введите имя файла: ")
+ # Запрос имени файла у пользователя
+    file_name = input("Введите имя файла: ")
 
-try:
+    try:
     # Открытие файла в режиме чтения
-    with open(file_name, 'r', encoding='utf-8') as file:
-        # Чтение содержимого файла
-        message = file.read()
-        # Вывод содержимого файла
+        with open(file_name, 'r', encoding='utf-8') as file:
+         # Чтение содержимого файла
+           message = file.read()
+           # Вывод содержимого файла
         print(message)
-except FileNotFoundError:
-    print("Файл не найден.")
-except Exception as e:
-    print(f"Произошла ошибка: {e}")
+    except FileNotFoundError:
+        print("Файл не найден.")
+    except Exception as e:
+       print(f"Произошла ошибка: {e}")
 
-# Пример расчета
-entropy = calculate_entropy(message)
-print(f'Энтропия источника сообщений по Шеннону: {entropy}')
-entropyH = calculate_entropyH(message)
-print(f'Энтропия источника сообщений по Хартли: {entropyH}')
-a = alphabet_power(message)
-print(f'Мощность алфавита: {a}')
-# избыточность алфавита для кодирования сообщения D
-d = ((entropyH-entropy)/entropyH)*100
-print(f'Избыточность алфавита для кодирования сообщения: {d}')
+    # Пример расчета
+    entropy = calculate_entropy(message)
+    print(f'Энтропия источника сообщений по Шеннону: {entropy}')
+    entropyH = calculate_entropyH(message)
+    print(f'Энтропия источника сообщений по Хартли: {entropyH}')
+    a = alphabet_power(message)
+    print(f'Мощность алфавита: {a}')
+    # избыточность алфавита для кодирования сообщения D
+    d = ((entropyH-entropy)/entropyH)*100
+    print(f'Избыточность алфавита для кодирования сообщения: {d}')
+    number = int(input("Введите число 0 для выхода "))
+    if number==0:
+        break
+print("Работа с программой завершена")    
+
